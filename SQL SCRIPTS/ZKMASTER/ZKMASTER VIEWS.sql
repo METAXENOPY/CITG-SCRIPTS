@@ -1,0 +1,7 @@
+SELECT MachineAlias, MachineNumber FROM [dbo].[Machines] ORDER BY MachineNumber
+
+SELECT * FROM [dbo].[Userinfo] WHERE Name LIKE '%PLANDO%'
+
+SELECT A.USERID, A.CHECKTIME, A.SENSORID, B.MachineAlias FROM [dbo].[CHECKINOUT] A INNER JOIN [dbo].[Machines] B ON B.MachineNumber = A.SENSORID
+WHERE CHECKTIME LIKE '%2023%' AND USERID = '30512' ORDER BY CHECKTIME DESC
+

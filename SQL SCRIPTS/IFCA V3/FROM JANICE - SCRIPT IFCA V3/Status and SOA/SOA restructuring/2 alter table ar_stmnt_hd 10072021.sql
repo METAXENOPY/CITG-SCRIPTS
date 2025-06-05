@@ -1,0 +1,22 @@
+alter table mgr.ar_stmnt_hd
+add	mf_statement_date datetime,
+	mf_due_date datetime,
+	mf_monthly_amortization numeric (21,2),
+	mf_amount_due numeric (21,2),
+	mf_purchase_price numeric (21,2),
+	mf_total_paid numeric (21,2),
+	mf_balance numeric (21,2),
+	mf_last_paydate datetime,
+	mf_last_payamount numeric (21,2),
+	mf_covered_month datetime,
+	mf_last_desc varchar (255),
+	md_current_dues numeric (21,2),
+	md_amout_due numeric (21,2),
+	md_last_paydate datetime,
+	md_last_payamount numeric (21,2),
+	md_last_desc varchar (255),
+	md_terms char(1),
+	md_past_due numeric (21,2),
+	md_no_months numeric (12,0),
+	md_total_past_due numeric (21,2)
+	
