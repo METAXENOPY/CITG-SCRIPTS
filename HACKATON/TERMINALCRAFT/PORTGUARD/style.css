@@ -1,0 +1,11 @@
+#status {
+    background: $surface;
+    color: $text;
+    padding: 1 2;
+    height: 3;
+    dock: top;
+}
+
+#table {
+    padding: 1 2;
+}

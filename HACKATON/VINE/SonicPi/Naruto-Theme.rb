@@ -20,7 +20,7 @@ end
 # Define the percussion
 define :drums do
   sample :drum_bass_hard
-  sleep 0.5
+  sleep 0.10
   sample :drum_snare_soft
   sleep 0.5
 end
