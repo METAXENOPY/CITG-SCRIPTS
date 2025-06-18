@@ -17,7 +17,7 @@ python main.py
 ### Roadmap
 - Add alerts
 - Auto-blocking via netsh/iptables
-- Filtering by process name/port
+- Filtering by process name/port -- ADDED
 
 ### License
 MIT

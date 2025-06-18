@@ -1,2 +1,3 @@
 # CITG-SCRIPTS
-Work Related Scripts.
+SQL SCRIPT - Work Related Scripts.
+HACKATON - Hack Club YSWS
