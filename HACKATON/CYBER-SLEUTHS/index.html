@@ -2,66 +2,103 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Cyber Sleuths: Phish Busters</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>Cyber Sleuths: Phish Busters</h1>
-
-  <div id="timer">⏱️ Time Left: <span id="time-left">60</span>s</div>
-  <div id="score">Score: 0</div>
-
-  <div id="email-viewer">
-    <h2>Email Subject: <span id="email-subject"></span></h2>
-    <p><strong>From:</strong> <span id="email-sender"></span></p>
-    <p><strong>To:</strong> you@example.com</p>
-    <p><strong>Header Preview:</strong> <span id="email-headers"></span></p>
-    <div id="email-body"></div>
-    <div id="email-attachments"></div>
-  </div>
-
-  <div id="choices">
-    <button onclick="choose('phish')">Phish</button>
-    <button onclick="choose('legit')">Legit</button>
-    <button onclick="reportEmail()">Report</button>
-  </div>
-
-  <div id="feedback"></div>
-
-  <div id="final-screen" style="display:none">
-    <h2>🎉 Game Over, Digital Detective! 🔍</h2>
-    <div class="final-results">
-      <p><strong>Your Final Score:</strong> <span id="final-score">0</span></p>
-      <div class="stats">
-        <p>📬 Emails Reviewed: <span id="emails-reviewed">0</span></p>
-        <p>✅ Correct Identifications: <span id="correct-count">0</span></p>
-        <p>❌ Mistakes Made: <span id="wrong-count">0</span></p>
-        <p>📝 Email Writing Bonus: <span id="writing-score">0</span></p>
+  <div class="container">
+    <!-- Start Screen -->
+    <div id="start-screen">
+      <h1>Cyber Sleuths: Phish Busters</h1>
+      <p>Can you spot the phish? Test your skills and learn to stay safe!</p>
+      <div id="start-buttons">
+        <button id="start-game-btn">▶️ Start Game</button>
+        <button id="help-btn">❓ Help</button>
+        <button id="info-btn">ℹ️ Info</button>
       </div>
-      <h3>🏆 Leaderboard</h3>
-      <ul id="leaderboard"></ul>
     </div>
-    <div id="writing-challenge">
-  <h2>✍️ Email Writing Challenge</h2>
-  <label>Subject:</label>
-  <input type="text" id="custom-subject"><br>
-  <label>Sender:</label>
-  <input type="text" id="custom-sender"><br>
-  <label>Body:</label><br>
-  <textarea id="custom-body" rows="5" cols="40"></textarea><br>
-  <label>Is this a:</label>
-  <select id="custom-label">
-    <option value="phish">Phishing</option>
-    <option value="legit">Legitimate</option>
-  </select><br><br>
-  <button onclick="submitCustomEmail()">Submit Email</button>
-  <p id="custom-feedback"></p>
-</div>
-  </div>
 
-  <script src="game.js"></script>
-  <script type="module" src="game.js"></script>
+    <!-- Timer and Score -->
+    <div id="top-bar" style="display: none;">
+      <div id="timer">⏱ Time Left: <span id="time-left">60</span>s</div>
+      <div id="score-display">🏆 <span id="score">Score: 0</span></div>
+      <div id="difficulty-display">🟢 Difficulty: <span id="difficulty-level">Easy</span></div>
+    </div>
+
+    <!-- Email Viewer -->
+    <div id="email-viewer" style="display: none;">
+      <div class="email-header">
+        <div class="email-from"><strong>From:</strong> <span id="email-sender"></span></div>
+        <div class="email-to"><strong>To:</strong> you@example.com</div>
+        <div class="email-date"><strong>Date:</strong> <span id="email-date"></span></div>
+        <div class="email-subject"><strong>Subject:</strong> <span id="email-subject"></span></div>
+      </div>
+      <hr>
+      <div class="email-body" id="email-body"></div>
+      <div class="email-attachments"><strong>Attachments:</strong> <span id="email-attachments"></span></div>
+      <details class="email-headers">
+        <summary>Show original headers</summary>
+        <pre id="email-headers"></pre>
+      </details>
+    </div>
+
+    <!-- Choices -->
+    <div id="choices" style="display: none;">
+      <button onclick="choose('phish')">🚨 Phish</button>
+      <button onclick="choose('legit')">✅ Legit</button>
+      <button onclick="reportEmail()">📨 Report</button>
+    </div>
+
+    <!-- Feedback -->
+    <div id="feedback" class="feedback" style="display: none;"></div>
+
+
+    <!-- Final Screen -->
+    <div id="final-screen" style="display: none;">
+      <h2>🧠 Game Over</h2>
+      <p>🔢 Final Score: <strong><span id="final-score"></span></strong></p>
+      <p>📧 Emails Reviewed: <span id="emails-reviewed"></span></p>
+      <p>✅ Correct: <span id="correct-count"></span></p>
+      <p>❌ Incorrect: <span id="wrong-count"></span></p>
+      <button id="play-again-btn">🔄 Play Again</button>
+    </div>
+
+    <!-- Help Modal -->
+    <div id="help-modal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <span class="close" id="close-help">&times;</span>
+        <h2>How to Play</h2>
+        <ul>
+          <li>Read each email carefully.</li>
+          <li>Decide if it’s <b>Phish</b> or <b>Legit</b>.</li>
+          <li>Use <b>Report</b> to flag suspicious emails.</li>
+          <li>Earn points for correct answers and streaks.</li>
+          <li>Try to get the highest score before time runs out.</li>
+        </ul>
+      </div>
+    </div>
+    <!-- Info Modal -->
+    <div id="info-modal" class="modal" style="display:none;">
+      <div class="modal-content">
+        <span class="close" id="close-info">&times;</span>
+        <h2>About</h2>
+        <p>
+          <b>Cyber Sleuths: Phish Busters</b> is an educational game to help you recognize phishing and legitimate emails.<br>
+          Created for cybersecurity awareness and fun! <br>
+          -- Kenji Plando
+        </p>
+      </div>
+    </div>
+  </div>
+  <footer id="site-footer" style="text-align:center; margin: 32px 0 12px 0; color: #888; font-size: 0.98em;">
+    &copy; 2025 Kenji Plando. All rights reserved. 
+    <a href="https://github.com/metaxenopy" target="_blank" style="color:#2357c5; text-decoration:none; margin-left:8px;">
+      GitHub: METAXENOPY
+    </a>
+  </footer>
+
   <script type="module" src="emailsamp.js"></script>
-  
+  <script type="module" src="game.js"></script>
 </body>
 </html>
