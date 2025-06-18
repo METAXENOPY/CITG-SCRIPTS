@@ -1,37 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>Cyber Sleuths: Phish Busters</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="game-container">
-    <h1>Cyber Sleuths: Phish Busters</h1>
+  <h1>Cyber Sleuths: Phish Busters</h1>
 
-    <div id="email-viewer">
-      <div id="email-header">
-        <p><strong>From:</strong> <span id="email-from">loading...</span></p>
-        <p><strong>Subject:</strong> <span id="email-subject">loading...</span></p>
-        <p><a href="#" onclick="toggleHeaders()">🔍 View Source Headers</a></p>
-        <pre id="email-headers" style="display:none;"></pre>
+  <div id="timer">⏱️ Time Left: <span id="time-left">60</span>s</div>
+  <div id="score">Score: 0</div>
+
+  <div id="email-viewer">
+    <h2>Email Subject: <span id="email-subject"></span></h2>
+    <p><strong>From:</strong> <span id="email-sender"></span></p>
+    <p><strong>To:</strong> you@example.com</p>
+    <p><strong>Header Preview:</strong> <span id="email-headers"></span></p>
+    <div id="email-body"></div>
+    <div id="email-attachments"></div>
+  </div>
+
+  <div id="choices">
+    <button onclick="choose('phish')">Phish</button>
+    <button onclick="choose('legit')">Legit</button>
+    <button onclick="reportEmail()">Report</button>
+  </div>
+
+  <div id="feedback"></div>
+
+  <div id="final-screen" style="display:none">
+    <h2>🎉 Game Over, Digital Detective! 🔍</h2>
+    <div class="final-results">
+      <p><strong>Your Final Score:</strong> <span id="final-score">0</span></p>
+      <div class="stats">
+        <p>📬 Emails Reviewed: <span id="emails-reviewed">0</span></p>
+        <p>✅ Correct Identifications: <span id="correct-count">0</span></p>
+        <p>❌ Mistakes Made: <span id="wrong-count">0</span></p>
+        <p>📝 Email Writing Bonus: <span id="writing-score">0</span></p>
       </div>
-      <div id="email-body">
-        <p id="email-content">loading...</p>
-        <div id="email-attachments"></div>
-      </div>
+      <h3>🏆 Leaderboard</h3>
+      <ul id="leaderboard"></ul>
     </div>
-
-    <div id="choices">
-      <button onclick="choose('legit')">Legit</button>
-      <button onclick="choose('phish')">Phish</button>
-      <button onclick="reportEmail()">🛡️ Report Email</button>
-    </div>
-
-    <p id="feedback"></p>
-    <p id="score">Score: 0</p>
+    <div id="writing-challenge">
+  <h2>✍️ Email Writing Challenge</h2>
+  <label>Subject:</label>
+  <input type="text" id="custom-subject"><br>
+  <label>Sender:</label>
+  <input type="text" id="custom-sender"><br>
+  <label>Body:</label><br>
+  <textarea id="custom-body" rows="5" cols="40"></textarea><br>
+  <label>Is this a:</label>
+  <select id="custom-label">
+    <option value="phish">Phishing</option>
+    <option value="legit">Legitimate</option>
+  </select><br><br>
+  <button onclick="submitCustomEmail()">Submit Email</button>
+  <p id="custom-feedback"></p>
+</div>
   </div>
 
   <script src="game.js"></script>
+  <script type="module" src="game.js"></script>
+  <script type="module" src="emailsamp.js"></script>
+  
 </body>
 </html>

@@ -1,9 +1,9 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #1e1e2f;
-  color: #f0f0f0;
+  background: #fefefe; /* overrides previous background-color */
+  color: #333;         /* overrides previous color */
   text-align: center;
-  padding: 2em;
+  padding: 20px;       /* overrides previous padding */
 }
 
 #game-container {
@@ -16,15 +16,16 @@ body {
 }
 
 #email-viewer {
-  background-color: #ffffff;
+  background: #fff; /* overrides previous background-color */
   color: #000000;
   text-align: left;
-  padding: 1em;
+  padding: 10px;    /* overrides previous padding */
   border-radius: 10px;
-  margin: 1em auto;
+  margin: 1em auto 10px auto; /* combines margin-bottom and margin */
   max-width: 650px;
   font-family: Arial, sans-serif;
   box-shadow: 0 0 10px rgba(0,0,0,0.4);
+  border: 1px solid #ccc;
 }
 
 #email-header {
@@ -55,6 +56,12 @@ body {
   margin-top: 1em;
 }
 
+#choices button {
+  margin: 5px;
+  padding: 10px 15px;
+  font-size: 16px;
+}
+
 button {
   padding: 1em 2em;
   margin: 1em;
@@ -81,10 +88,23 @@ button:nth-child(3):hover {
 
 #feedback {
   font-size: 1.2em;
-  margin-top: 1em;
+  margin-top: 10px; /* overrides previous margin-top */
+  font-weight: bold;
 }
 
 #score {
   font-size: 1.2em;
   margin-top: 0.5em;
+}
+
+.final-results {
+  background: #f3f3f3;
+  border: 2px solid #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.final-results .stats p {
+  margin: 6px 0;
 }
