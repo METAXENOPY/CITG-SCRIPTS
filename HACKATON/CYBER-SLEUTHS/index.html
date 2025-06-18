@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cyber Sleuths: Phish Busters</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="game-container">
+    <h1>Cyber Sleuths: Phish Busters</h1>
+
+    <div id="email-viewer">
+      <div id="email-header">
+        <p><strong>From:</strong> <span id="email-from">loading...</span></p>
+        <p><strong>Subject:</strong> <span id="email-subject">loading...</span></p>
+        <p><a href="#" onclick="toggleHeaders()">🔍 View Source Headers</a></p>
+        <pre id="email-headers" style="display:none;"></pre>
+      </div>
+      <div id="email-body">
+        <p id="email-content">loading...</p>
+        <div id="email-attachments"></div>
+      </div>
+    </div>
+
+    <div id="choices">
+      <button onclick="choose('legit')">Legit</button>
+      <button onclick="choose('phish')">Phish</button>
+      <button onclick="reportEmail()">🛡️ Report Email</button>
+    </div>
+
+    <p id="feedback"></p>
+    <p id="score">Score: 0</p>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
