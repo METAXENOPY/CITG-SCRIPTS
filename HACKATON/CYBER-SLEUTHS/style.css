@@ -243,6 +243,7 @@ button[onclick*="report"] {
   margin-left: 18px;
 }
 .close {
+  
   position: absolute;
   top: 12px;
   right: 18px;

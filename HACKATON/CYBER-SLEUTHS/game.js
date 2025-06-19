@@ -27,20 +27,20 @@ window.onload = () => {
   document.getElementById("final-screen").style.display = "none";
 
   // Attach modal event listeners here:
-  document.getElementById("help-btn").onclick = function() {
+  document.getElementById("help-btn").onclick = function () {
     document.getElementById("help-modal").style.display = "block";
   };
-  document.getElementById("close-help").onclick = function() {
+  document.getElementById("close-help").onclick = function () {
     document.getElementById("help-modal").style.display = "none";
   };
-  document.getElementById("info-btn").onclick = function() {
+  document.getElementById("info-btn").onclick = function () {
     document.getElementById("info-modal").style.display = "block";
   };
-  document.getElementById("close-info").onclick = function() {
+  document.getElementById("close-info").onclick = function () {
     document.getElementById("info-modal").style.display = "none";
   };
   // Close modals when clicking outside content
-  window.onclick = function(event) {
+  window.onclick = function (event) {
     if (event.target.classList.contains("modal")) {
       event.target.style.display = "none";
     }
@@ -217,7 +217,7 @@ function updateDifficultyDisplay() {
   document.getElementById("difficulty-level").innerText = label;
 }
 
-document.getElementById("play-again-btn").onclick = function() {
+document.getElementById("play-again-btn").onclick = function () {
   // Reset all variables
   score = 0;
   correctAnswers = 0;
@@ -238,7 +238,7 @@ document.getElementById("play-again-btn").onclick = function() {
   loadSample();
 };
 
-document.getElementById("start-game-btn").onclick = function() {
+document.getElementById("start-game-btn").onclick = function () {
   // Hide start screen, show game UI sections
   document.getElementById("start-screen").style.display = "none";
   document.getElementById("top-bar").style.display = "";
