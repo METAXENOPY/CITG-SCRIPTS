@@ -216,7 +216,7 @@ function updateDifficultyDisplay() {
   if (difficulty === 3) label = "Hard";
   document.getElementById("difficulty-level").innerText = label;
 }
-
+ 
 document.getElementById("play-again-btn").onclick = function () {
   // Reset all variables
   score = 0;

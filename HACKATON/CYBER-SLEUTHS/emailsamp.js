@@ -29,7 +29,7 @@ export const defaultSamples = [
     correct: "legit"
   },
   // Phishing Email 1
-  {
+  { 
     subject: "Your account has been suspended",
     sender: "support@paypa1.com",
     body: "Dear Customer,\n\nWe noticed suspicious activity in your account. Please verify your information immediately by clicking the link below:\nhttp://paypa1-security.com/verify\n\nFailure to do so will result in permanent suspension.",
