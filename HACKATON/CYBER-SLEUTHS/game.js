@@ -65,28 +65,27 @@ function startTimer() {
   }, 1000);
 }
 
+function autoLink(text) {
+  // Regex to find URLs and wrap them in <a>
+  return text.replace(
+    /(https?:\/\/[^\s]+)/g,
+    '<a href="$1" class="email-link" target="_blank" rel="noopener noreferrer">$1</a>'
+  ).replace(/\n/g, '<br>');
+}
+
 function loadSample() {
-  const samples = getAllSamples();
-  if (samples.length === 0) return endGame();
-
-  // Increase AI-generated email chance with difficulty
-  let aiChance = 0.3 + (difficulty - 1) * 0.2; // 0.3, 0.5, 0.7
-  let sample;
-  if (Math.random() < aiChance) {
-    sample = generateAIMail();
-  } else {
-    sample = samples[Math.floor(Math.random() * samples.length)];
-  }
-
+  let sample = generateAIMail();
   currentSample = sample;
 
   document.getElementById("email-subject").innerText = sample.subject;
   document.getElementById("email-sender").innerText = sample.sender;
-  document.getElementById("email-body").innerText = sample.body;
-  document.getElementById("email-headers").innerText = sample.headers;
-  document.getElementById("email-attachments").innerText = sample.attachments.length > 0 ? sample.attachments.join(", ") : "None";
-  // Set a date (use sample.headers if you want to parse a real date)
   document.getElementById("email-date").innerText = new Date().toLocaleString();
+  document.getElementById("email-body").innerHTML = autoLink(sample.body);
+  document.getElementById("email-headers").innerText = sample.headers;
+  document.getElementById("email-attachments").innerText =
+    sample.attachments && sample.attachments.length > 0
+      ? sample.attachments.join(", ")
+      : "None";
 
   enableButtons();
   showFeedback(""); // Clear feedback on new sample

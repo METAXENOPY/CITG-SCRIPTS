@@ -71,13 +71,32 @@ h1, h2, h3 {
 }
 
 .email-body {
-  padding: 24px;
-  min-height: 80px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 1.08em;
+  line-height: 1.7;
   color: #222;
-  background: #fff;
-  border-bottom: 1px solid #e5eaf0;
-  white-space: pre-wrap;
+  background: #fcfcfc;
+  padding: 18px 16px;
+  border-radius: 6px;
+  min-height: 120px;
+  margin-bottom: 12px;
+  word-break: break-word;
+}
+
+.email-link {
+  color: #1565c0;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.15s;
+}
+
+.email-link:hover,
+.email-link:focus {
+  color: #0d47a1;
+  background: #e3f2fd;
+  text-decoration: underline;
+  outline: none;
+  border-radius: 2px;
 }
 
 .email-attachments {
